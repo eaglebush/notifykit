@@ -6,10 +6,6 @@ type Message interface {
 	SetMsg(string) error
 
 	// Decodes the encoded message body from base64
-	GetMsg() string
+	GetMsg() (string, error)
 }
 
-// Sender can be the interface for any Go notification requirement
-type Sender interface {
-	Send(Message) error
-}
