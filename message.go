@@ -40,8 +40,13 @@ type (
 		// The address parameter is the e-mail address. But it can be phone number, or any social media handler
 		AddRecipient(name string, address string, role Role) error
 
-		// Attach attaches a file to the message. resType determines if this is a file attachment or an inline object
-		Attach(fileName, displayName, fileId string, resType ResourceType) error
+		// Attach attaches a file to the message
+		//
+		// fileName:	The source file name
+		// resType:		Determines if this is a file attachment or an inline object
+		// displayName: Applies to attachment type
+		// fileID:		Applies to inline type
+		Attach(fileName, resType ResourceType, displayName, fileId string) error
 
 		// ClearAttachments clears file attachments
 		ClearAttachments()
