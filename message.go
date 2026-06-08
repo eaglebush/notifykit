@@ -46,7 +46,7 @@ type (
 		// resType:		Determines if this is a file attachment or an inline object
 		// displayName: Applies to attachment type
 		// fileID:		Applies to inline type
-		Attach(fileName, resType ResourceType, displayName, fileId string) error
+		Attach(fileName string, resType ResourceType, displayName, fileId string) error
 
 		// ClearAttachments clears file attachments
 		ClearAttachments()
