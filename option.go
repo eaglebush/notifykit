@@ -2,6 +2,19 @@ package notifykit
 
 type Option func(*[]any)
 
+// Host sets the host.
+//
+// The host in the New() function is required,
+// but it needs to be set by function options in the initialization
+func Host(hostOrIp string) Option {
+	return func(args *[]any) {
+		nv := map[string]string{
+			"host": hostOrIp,
+		}
+		*args = append(*args, nv)
+	}
+}
+
 // Path specifies a path to append to the host
 func Path(path string) Option {
 	return func(args *[]any) {

@@ -1,6 +1,9 @@
 package notifykit
 
-import "errors"
+import (
+	"errors"
+	"slices"
+)
 
 // Sender can be the interface for any Go notification requirement
 type Sender interface {
@@ -19,6 +22,8 @@ func New(host string, opts ...Option) (Sender, error) {
 	if implSender == nil {
 		return nil, errors.New("sender: no sender registered")
 	}
+
+	opts = slices.Insert(opts, 0, Host(host))
 
 	// Unpack the options into an slice of raw data
 	var driverArgs []any
