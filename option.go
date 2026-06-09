@@ -66,3 +66,13 @@ func Proxy(proxy string) Option {
 		*args = append(*args, nv)
 	}
 }
+
+// MaxConcurrentUploads sets the limit of processing max concurrent uploads
+func MaxConcurrentUploads(max int) Option {
+	return func(args *[]any) {
+		nv := map[string]int{
+			"max_concurrent_uploads": max,
+		}
+		*args = append(*args, nv)
+	}
+}

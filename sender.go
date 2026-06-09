@@ -8,6 +8,7 @@ import (
 // Sender can be the interface for any Go notification requirement
 type Sender interface {
 	Send(Message) error
+	Messages() []string
 }
 
 var implSender func(...any) Sender
