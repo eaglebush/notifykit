@@ -2,6 +2,19 @@ package notifykit
 
 type Option func(*[]any)
 
+// Option keys
+//
+// The following keys are the keys supported by the built-in options of the Sender interface
+const (
+	OPTION_KEY_HOST               string = "host"
+	OPTION_KEY_PATH               string = "path"
+	OPTION_KEY_COMPRESSED         string = "compressed"
+	OPTION_KEY_HEADER             string = "header"
+	OPTION_KEY_TIMEOUT            string = "timeout"
+	OPTION_KEY_PROXY              string = "proxy"
+	OPTION_KEY_MAX_CONCUR_UPLOADS string = "max_concurrent_uploads"
+)
+
 // Host sets the host.
 //
 // The host in the New() function is required,
@@ -9,7 +22,7 @@ type Option func(*[]any)
 func Host(hostOrIp string) Option {
 	return func(args *[]any) {
 		nv := map[string]string{
-			"host": hostOrIp,
+			OPTION_KEY_HOST: hostOrIp,
 		}
 		*args = append(*args, nv)
 	}
@@ -19,7 +32,7 @@ func Host(hostOrIp string) Option {
 func Path(path string) Option {
 	return func(args *[]any) {
 		nv := map[string]string{
-			"path": path,
+			OPTION_KEY_PATH: path,
 		}
 		*args = append(*args, nv)
 	}
@@ -29,7 +42,7 @@ func Path(path string) Option {
 func Compressed(compressed bool) Option {
 	return func(args *[]any) {
 		nv := map[string]bool{
-			"compressed": compressed,
+			OPTION_KEY_COMPRESSED: compressed,
 		}
 		*args = append(*args, nv)
 	}
@@ -39,7 +52,7 @@ func Compressed(compressed bool) Option {
 func Header(key, value string) Option {
 	return func(args *[]any) {
 		nv := map[string]map[string]string{
-			"header": {
+			OPTION_KEY_HEADER: {
 				key: value,
 			},
 		}
@@ -51,7 +64,7 @@ func Header(key, value string) Option {
 func Timeout(timeOut int) Option {
 	return func(args *[]any) {
 		nv := map[string]int{
-			"timeout": timeOut,
+			OPTION_KEY_TIMEOUT: timeOut,
 		}
 		*args = append(*args, nv)
 	}
@@ -61,7 +74,7 @@ func Timeout(timeOut int) Option {
 func Proxy(proxy string) Option {
 	return func(args *[]any) {
 		nv := map[string]string{
-			"proxy": proxy,
+			OPTION_KEY_PROXY: proxy,
 		}
 		*args = append(*args, nv)
 	}
@@ -71,7 +84,7 @@ func Proxy(proxy string) Option {
 func MaxConcurrentUploads(max int) Option {
 	return func(args *[]any) {
 		nv := map[string]int{
-			"max_concurrent_uploads": max,
+			OPTION_KEY_MAX_CONCUR_UPLOADS: max,
 		}
 		*args = append(*args, nv)
 	}
