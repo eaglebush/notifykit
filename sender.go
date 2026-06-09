@@ -7,7 +7,12 @@ import (
 
 // Sender can be the interface for any Go notification requirement
 type Sender interface {
+	// Send the message
 	Send(Message) error
+
+	// Messages contains the messages logged while sending.
+	//
+	// The contents of this field depends on the driver
 	Messages() []string
 }
 
