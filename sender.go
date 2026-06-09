@@ -10,7 +10,7 @@ type Sender interface {
 var implSender func(...any) Sender
 
 // Register the implementation
-func Register(name string, impl func(...any) Sender) {
+func Register(impl func(...any) Sender) {
 	if impl == nil {
 		panic("sender: Register driver is nil")
 	}
