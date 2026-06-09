@@ -33,7 +33,7 @@ type (
 	Role         uint8
 	ResourceType uint8
 
-	// Message can be the interface for any Go message requirement
+	// Message interface definition for Sender compatibility use
 	Message interface {
 		// AddRecipient adds a new mail recipient with role.
 		//

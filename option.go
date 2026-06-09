@@ -1,0 +1,56 @@
+package notifykit
+
+type Option func(*[]any)
+
+// Path specifies a path to append to the host
+func Path(path string) Option {
+	return func(args *[]any) {
+		nv := map[string]string{
+			"path": path,
+		}
+		*args = append(*args, nv)
+	}
+}
+
+// Compressed enables the request to compress API response
+func Compressed(compressed bool) Option {
+	return func(args *[]any) {
+		nv := map[string]bool{
+			"compressed": compressed,
+		}
+		*args = append(*args, nv)
+	}
+}
+
+// Header sets the header value
+func Header(key, value string) Option {
+	return func(args *[]any) {
+		hv := map[string]string{
+			key: value,
+		}
+		nv := map[string]map[string]string{
+			"header": hv,
+		}
+		*args = append(*args, nv)
+	}
+}
+
+// Timeout sets the request timeout
+func Timeout(timeOut int) Option {
+	return func(args *[]any) {
+		nv := map[string]int{
+			"timeout": timeOut,
+		}
+		*args = append(*args, nv)
+	}
+}
+
+// Proxy sets the http connection proxy
+func Proxy(proxy string) Option {
+	return func(args *[]any) {
+		nv := map[string]string{
+			"proxy": proxy,
+		}
+		*args = append(*args, nv)
+	}
+}
