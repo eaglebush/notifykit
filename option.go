@@ -25,11 +25,10 @@ func Compressed(compressed bool) Option {
 // Header sets the header value
 func Header(key, value string) Option {
 	return func(args *[]any) {
-		hv := map[string]string{
-			key: value,
-		}
 		nv := map[string]map[string]string{
-			"header": hv,
+			"header": {
+				key: value,
+			},
 		}
 		*args = append(*args, nv)
 	}

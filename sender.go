@@ -11,9 +11,6 @@ var implSender func(...any) Sender
 
 // Register the implementation
 func Register(impl func(...any) Sender) {
-	if impl == nil {
-		panic("sender: Register driver is nil")
-	}
 	implSender = impl
 }
 
