@@ -44,8 +44,8 @@ type (
 		//
 		// fileName:	The source file name
 		// resType:		Determines if this is a file attachment or an inline object
-		// displayName: Applies to attachment type
-		// fileID:		Applies to inline type
+		// displayName: Name that appears in the attachment section. Applies to attachment type
+		// fileId:		Content id to reference in the mail code. Applies to inline type
 		Attach(fileName string, resType ResourceType, displayName, fileId string) error
 
 		// ClearAttachments clears file attachments
